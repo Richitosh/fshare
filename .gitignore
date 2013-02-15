@@ -1,0 +1,17 @@
+syntax: glob
+
+# directories
+db
+var
+static/upload
+static/admin
+file_storage
+
+# files and file templates
+settings_custom.py
+uwsgi.ini
+*.pyc
+*.orig
+*.pyo
+*.swp
+*.sql

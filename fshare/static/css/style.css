@@ -1,0 +1,52 @@
+body
+{
+    font-family:"Lucida Grande","DejaVu Sans","Bitstream Vera Sans",Verdana,Arial,sans-serif;
+}
+div.index
+{
+    top: 30px;
+    width: 700px;
+    position: absolute;
+    left: 50%;
+    margin-left: -350px;
+    background-color: #F2F2F2;
+    border-style: dashed;
+    border-width: 1px;
+    padding: 5px;
+}
+div.center
+{
+    top: 30px;
+    width: 700px;
+    position: absolute;
+    left: 50%;
+    margin-left: -350px;
+    background-color: #F2F2F2;
+    border-style: dashed;
+    border-width: 1px;
+    padding: 5px;
+}
+.personal
+{
+    font-weight: bold;
+    font-size: 10pt;
+}
+.label
+{
+    color: darkgray;
+}
+.cent
+{
+    text-align: center;
+}
+.caption
+{
+    background-color: lightyellow;
+    padding: 5px;
+    border-width: 1px;
+    border-style: solid;
+}
+input
+{
+    width: 90%;
+}

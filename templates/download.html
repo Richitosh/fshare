@@ -1,0 +1,39 @@
+{% extends "html_base.html" %}
+{% block title %}Скачать файлы{% endblock %}
+
+{% block body %}
+
+<div class="center">
+
+<div class="cent personal caption">
+Здесь вы можете скачать файлы, которые вам отправили,<br />
+слева информация об отправителе, справа ссылки на файлы.</div>
+<table valign="top" width="100%" style="margin: 5px; padding: 5px">
+<tr>
+    <td valign="top" width="50%" style="padding: 5px">
+    <p class="personal"><span class="label">ФИО:</span><br />{{ creator.full_name }}</p>
+    <p class="personal"><span class="label">Отдел:</span><br />{{ creator.appointment }}</p>
+    <p class="personal"><span class="label">Филиал:</span><br />{{ creator.department }}</p>
+    <p class="personal"><span class="label">e-mail:</span><br />{{ creator.email }}</p>
+    <p class="personal"><span class="label">Телефон:</span><br />{{ creator.phone }}</p>
+    </td>
+    <td valign="top" width="50%" style="padding: 5px">
+    <p>
+    {% for file in files %}
+        <a href="/file_storage/{{ file.file }}">{{ file.file_name }}</a> ({{file.file.size|filesizeformat}})<br />
+    {% endfor %}
+    </p>
+    <p><small class="label">* если файл открывается, вместо того, чтобы сохраниться,
+        нажмите на ссылку правой кнопкой и выберите "сохранить ссылку как.."</small></p>
+    {% if fileset.description %}
+    <p class="personal">Описание:</p>
+    <p><small class="label">{{ fileset.description }}</p>
+    </td>
+    {% endif %}
+</tr>
+</table>
+<div class="cent personal caption">
+Эти файлы будут автоматически удалены {{ fileset.end_date }}
+</div>
+</div>
+{% endblock %}

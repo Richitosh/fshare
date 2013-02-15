@@ -1,0 +1,15 @@
+{% extends "html_base.html" %}
+{% block title %}Файл успешно загружен{% endblock %}
+
+{% block body %}
+<div class="center">
+<div class="cent personal caption">Успешная загрузка файла</div>
+<br /><br />
+<div class="cent">
+Скопируйте <a href="{{ download_path }}">ссылку на файлы</a> внизу и отправьте адресату<br /><br />
+<textarea rows="1" cols="50">{{ download_path }}</textarea>
+</div>
+<br />
+<div class="cent personal caption">файлы будут удалены {{ fileset.end_date }}</div>
+</div>
+{% endblock %}

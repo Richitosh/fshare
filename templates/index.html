@@ -1,0 +1,52 @@
+{% extends "html_base.html" %}
+{% block title %}Обмен файлами{% endblock %}
+
+{% block body %}
+
+<div class="index">
+
+<div class="cent personal caption">
+Введите свои персональные данные и выберите файлы для отправки<br />
+</div>
+<form name="upload_file" action="/" method="post" enctype="multipart/form-data">{% csrf_token %}
+<table valign="top" width="100%" style="margin: 5px; padding: 5px">
+<tr>
+    <td valign="top" width="50%" style="padding: 5px">
+    <!--{{ creator_form.as_ul }}-->
+    {{ creator_form.non_field_errors }}
+    <p class="personal"><span class="label">ФИО:</span><br />{{ creator_form.full_name.errors }}{{ creator_form.full_name }}</p>
+    <p class="personal"><span class="label">Отдел:</span><br />{{ creator_form.appointment.errors }}{{ creator_form.appointment }}</p>
+    <p class="personal"><span class="label">Филиал:</span><br />{{ creator_form.department.errors }}{{ creator_form.department }}</p>
+    <p class="personal"><span class="label">email:</span><br />{{ creator_form.email.errors }}{{ creator_form.email }}</p>
+    <p class="personal"><span class="label">Телефоны:</span><br />{{ creator_form.phone.errors }}{{ creator_form.phone }}</p>
+    
+    </td>
+    <td valign="top" width="50%" style="padding: 5px">
+    <!--{{ fileset_form.as_ul }}-->
+    {{ fileset_form.non_field_errors }}
+    <p class="personal"><span class="label">Введите краткое описание(необязательно):</span><br />{{ fileset_form.description.errors }}{{ fileset_form.description }}</p>
+    <p class="personal"><span class="label">Время, которое должны хранится файлы:</span><br />{{ fileset_form.live_time.errors }}{{ fileset_form.live_time }}</p>
+    <hr />
+    {% if not files_count and request.method = 'POST' %}
+    Не указано ни одного файла!
+    {% endif %}
+    <!--{{ file_form.as_ul }}-->
+    {{ file_form.management_form }}
+    {% for form in file_form %}
+        {{ form.non_field_errors }}
+        {% for field in form %}
+            {{ field.errors }}{{ field }}
+        {% endfor %}
+    {% endfor %}
+    <hr />
+    <p align="center"><input type="submit" value="Отправить" /></p>
+    </td>
+</tr>
+</table>
+</form>
+<div class="cent personal caption">
+{% now "j F Y H:i" %}
+</div>
+</div>
+
+{% endblock %}
